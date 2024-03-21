@@ -17,16 +17,16 @@ class EmployeesListItem extends Component {
     }
 
     increaseEmployees = () => {
-        console.log(this.props.increase)
-        console.log(this.props.name)
+        const newIncrease = !this.state.increase
+        this.setState({ increase: newIncrease })
 
-        if (this.state.increase === true) {
-            this.setState({ increase: false })
-            this.inputRef.current.classList.remove('increase')
-        } else if (this.state.increase === false) {
-            this.setState({ increase: true })
+        if (newIncrease) {
             this.inputRef.current.classList.add('increase')
+        } else {
+            this.inputRef.current.classList.remove('increase')
         }
+
+        this.props.updateDataIncrease(this.props.id)
     }
 
     addLikeEmployees = () => {
